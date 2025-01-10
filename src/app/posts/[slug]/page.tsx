@@ -1,5 +1,5 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getAllPosts, getPostBySlug } from "../../../lib/api";
+import { getPostBySlug } from "../../../lib/api";
 import Image from "next/image";
 
 interface Post {
@@ -11,27 +11,18 @@ interface Post {
   readingTime: string;
 }
 
-export async function generateStaticParams() {
-  const posts = getAllPosts(["slug"]) as Array<Post>;
-  return posts.map((post) => ({
-    slug: post.slug,
-  })) as { slug: string }[];
-}
+type PostParams = Promise<{ slug: string }>;
 
-export default async function Post({
-  params,
-}: {
-  params: Promise<{ slug: string }> | { slug: string };
-}) {
-  const resolvedParams = await Promise.resolve(params);
-  const post = getPostBySlug(resolvedParams.slug, [
+const Post = async ({ params }: { params: PostParams }) => {
+  const { slug } = await params;
+  const post = (await getPostBySlug(slug, [
     "title",
     "date",
     "slug",
     "content",
     "coverImage",
     "readingTime",
-  ]) as Post;
+  ])) as Post;
 
   return (
     <main className="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark container mx-auto px-4 py-8">
@@ -62,4 +53,6 @@ export default async function Post({
       </article>
     </main>
   );
-}
+};
+
+export default Post;
