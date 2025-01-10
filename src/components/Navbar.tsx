@@ -31,7 +31,6 @@ export default function Navbar() {
             CodeBrew Blog
           </Link>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
             className="md:hidden p-2 rounded-lg hover:bg-hover-dark"
@@ -44,7 +43,6 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
             <Link
               href="/"
@@ -79,7 +77,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 space-y-4">
             <Link
