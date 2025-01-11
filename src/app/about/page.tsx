@@ -8,7 +8,7 @@ export default function AboutPage() {
           <div className="order-2 md:order-1">
             <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/me.jpg"
+                src="/me.jpeg"
                 alt="Jonas"
                 width={500}
                 height={400}
