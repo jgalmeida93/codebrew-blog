@@ -14,6 +14,20 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --selection-bg: #8b4513;
+    --selection-color: #ffffff;
+  }
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-color);
+}
+
 body {
   color: var(--foreground);
   background: var(--background);

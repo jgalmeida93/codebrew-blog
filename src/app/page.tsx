@@ -23,7 +23,7 @@ export default async function Home() {
   return (
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-accent-primary mb-8">
+        <h1 className="text-4xl font-bold text-secondary-dark dark:text-accent-primary mb-8">
           Últimos posts
         </h1>
         <div className="divide-y divide-border-dark">
