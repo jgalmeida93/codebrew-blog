@@ -13,6 +13,7 @@ export default {
       colors: {
         background: {
           light: "#fff4e0", // Fundo claro
+          semiLight: "#F5E6CA", // Fundo claro
           dark: "#1e1e1e", // Fundo escuro
         },
         card: {

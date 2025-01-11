@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Moon, Sun, Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [theme, setTheme] = useState("dark");
@@ -24,11 +25,22 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-background-light dark:bg-background-dark shadow-sm transition-colors duration-300 border-b border-border-dark">
+    <nav className="sticky top-0 z-50 bg-background-semiLight dark:bg-background-dark shadow-sm transition-colors duration-300 border-b border-accent-primary dark:border-border-dark">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="font-bold text-xl text-accent-primary">
-            CodeBrew Blog
+            <Image
+              src={
+                theme === "light"
+                  ? "/images/codebrew-dark.svg"
+                  : "/images/codebrew-light.svg"
+              }
+              alt="CodeBrew Logo"
+              width={150}
+              height={40}
+              priority
+              className="transition-opacity duration-300"
+            />
           </Link>
 
           <button
