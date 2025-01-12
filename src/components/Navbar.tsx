@@ -17,13 +17,18 @@ interface Post {
 }
 
 export default function Navbar({ posts }: { posts: Post[] }) {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === "undefined") return "light";
+    return localStorage.getItem("theme") || "light";
+  });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const categories = [...new Set(posts.map((post) => post.category))];
   const popularPosts = posts.sort((a, b) => b.views - a.views).slice(0, 5);
 
   useEffect(() => {
+    localStorage.setItem("theme", theme);
+
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {

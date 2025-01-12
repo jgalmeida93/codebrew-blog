@@ -20,7 +20,7 @@ export default function Sidebar({ posts }: SidebarProps) {
   return (
     <div className="sticky top-4 space-y-8">
       <div className="bg-background-light dark:bg-background-dark p-6 rounded-lg">
-        <h2 className="text-4xl font-bold text-gray-800 dark:text-accent-primary mb-4">
+        <h2 className="text-4xl font-bold text-secondary-dark dark:text-accent-primary mb-4">
           Categorias
         </h2>
         <ul className="space-y-2 divide-y divide-border-dark">
@@ -28,7 +28,7 @@ export default function Sidebar({ posts }: SidebarProps) {
             <li key={category} className="py-2">
               <a
                 href={`/category/${category}`}
-                className="text-gray-700 dark:text-gray-200 hover:text-accent-primary transition-colors duration-200"
+                className="text-text-light dark:text-text-secondary-dark hover:text-accent-primary transition-colors duration-200"
               >
                 {category}
               </a>
@@ -38,7 +38,7 @@ export default function Sidebar({ posts }: SidebarProps) {
       </div>
 
       <div className="bg-background-light dark:bg-background-dark p-6 rounded-lg">
-        <h2 className="text-4xl font-bold text-gray-800 dark:text-accent-primary mb-4">
+        <h2 className="text-4xl font-bold text-secondary-dark dark:text-accent-primary mb-4">
           Posts Populares
         </h2>
         <ul className="space-y-4 divide-y divide-border-dark">
@@ -46,7 +46,7 @@ export default function Sidebar({ posts }: SidebarProps) {
             <li key={post.slug} className="py-2">
               <a
                 href={`/posts/${post.slug}`}
-                className="text-gray-700 dark:text-gray-200 hover:text-accent-primary transition-colors duration-200"
+                className="text-text-light dark:text-text-secondary-dark hover:text-accent-primary transition-colors duration-200"
               >
                 {post.title}
               </a>
