@@ -29,7 +29,7 @@ body {
   color: var(--foreground);
   background-color: var(--background);
   background-image: radial-gradient(
-    rgba(181, 131, 90, 0.088) 2px,
+    rgba(181, 131, 90, 0.048) 2px,
     transparent 2px
   );
   background-size: 11px 11px;
