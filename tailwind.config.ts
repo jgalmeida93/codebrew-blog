@@ -22,6 +22,7 @@ export default {
         },
         text: {
           light: "#210003", // Texto principal claro
+          semiLight: "#fff4e0",
           dark: "#d5bda4", // Texto principal escuro
           secondary: {
             light: "#603121", // Texto secundário claro

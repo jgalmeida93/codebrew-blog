@@ -27,7 +27,7 @@ export default function PostCard({ post }: PostCardProps) {
 
   return (
     <Link href={`/posts/${post.slug}`}>
-      <article className="bg-card-light dark:bg-card-dark rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+      <article className="hover:bg-secondary-light rounded-lg transition-all transform hover:scale-[1.02] border border-secondary-light dark:border-border-dark bg-background-semiLight dark:bg-card-dark group">
         <div className="relative h-48 w-full">
           <Image
             src={post.coverImage}
@@ -37,21 +37,18 @@ export default function PostCard({ post }: PostCardProps) {
           />
         </div>
 
-        <div className="prose p-6">
-          <h2 className="text-2xl font-bold mb-2 text-accent-primary">
+        <div className="p-6">
+          <h2 className="text-lg md:text-xl font-semibold mb-2 text-secondary-dark dark:text-accent-primary dark:group-hover:text-text-semiLight group-hover:text-text-secondary-light">
             {post.title}
           </h2>
 
-          <p className="text-text-secondary-light dark:text-text-secondary-dark mb-4">
+          <p className="text-sm md:text-base text-text-light dark:text-text-secondary-dark line-clamp-2 dark:group-hover:text-text-semiLight group-hover:text-text-secondary-light">
             {post.excerpt}
           </p>
 
-          <div className="flex items-center text-sm text-accent-primary">
-            <time>{new Date(post.date).toLocaleDateString()}</time>
-            <span className="mx-2">•</span>
-            <span>{post.readingTime} min read</span>
-            <span className="mx-2">•</span>
-            <span>{views} views</span>
+          <div className="text-xs md:text-sm text-text-secondary-light dark:text-text-secondary-dark mt-2 dark:group-hover:text-text-semiLight group-hover:text-text-secondary-light">
+            {new Date(post.date).toLocaleDateString()} · {post.readingTime} min
+            read · {views} views
           </div>
         </div>
       </article>

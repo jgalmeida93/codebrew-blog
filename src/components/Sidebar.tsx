@@ -19,7 +19,7 @@ export default function Sidebar({ posts }: SidebarProps) {
 
   return (
     <div className="sticky top-4 space-y-8">
-      <div className="bg-background-light dark:bg-background-dark p-6 rounded-lg">
+      <div className="bg-background-light dark:bg-background-dark p-6 rounded-lg border border-secondary-light dark:border-border-dark">
         <h2 className="text-4xl font-bold text-secondary-dark dark:text-accent-primary mb-4">
           Categorias
         </h2>
@@ -37,7 +37,7 @@ export default function Sidebar({ posts }: SidebarProps) {
         </ul>
       </div>
 
-      <div className="bg-background-light dark:bg-background-dark p-6 rounded-lg">
+      <div className="bg-background-light dark:bg-background-dark p-6 rounded-lg border border-secondary-light dark:border-border-dark">
         <h2 className="text-4xl font-bold text-secondary-dark dark:text-accent-primary mb-4">
           Posts Populares
         </h2>
