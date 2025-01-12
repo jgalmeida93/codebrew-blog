@@ -1,4 +1,3 @@
-import Sidebar from "@/components/Sidebar";
 import PostList from "../components/PostList";
 import { getAllPosts } from "../lib/api";
 

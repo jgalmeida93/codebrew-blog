@@ -12,14 +12,10 @@ interface Post {
   views: number;
 }
 
-interface Props {
-  params: {
-    slug: string;
-  };
-}
+type tParams = Promise<{ slug: string }>;
 
-export default async function CategoryPage({ params }: Props) {
-  const { slug } = await params;
+export default async function CategoryPage(props: { params: tParams }) {
+  const { slug } = await props.params;
 
   const posts = (await getAllPosts([
     "title",
