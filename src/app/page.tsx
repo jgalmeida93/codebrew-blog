@@ -1,3 +1,4 @@
+import Sidebar from "@/components/Sidebar";
 import PostList from "../components/PostList";
 import { getAllPosts } from "../lib/api";
 
@@ -8,6 +9,8 @@ interface Post {
   excerpt: string;
   coverImage: string;
   readingTime: number;
+  category: string;
+  views: number;
 }
 
 export default async function Home() {
@@ -18,6 +21,8 @@ export default async function Home() {
     "excerpt",
     "coverImage",
     "readingTime",
+    "category",
+    "views",
   ])) as Post[];
 
   return (

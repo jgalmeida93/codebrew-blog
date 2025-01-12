@@ -1,5 +1,7 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface PostCardProps {
   post: {
@@ -9,10 +11,20 @@ interface PostCardProps {
     excerpt: string;
     coverImage: string;
     readingTime: number;
+    category: string;
+    views: number;
   };
 }
 
 export default function PostCard({ post }: PostCardProps) {
+  const [views, setViews] = useState(post.views);
+
+  useEffect(() => {
+    fetch(`/api/views/${post.slug}`)
+      .then((res) => res.json())
+      .then((data) => setViews(data.views));
+  }, [post.slug]);
+
   return (
     <Link href={`/posts/${post.slug}`}>
       <article className="bg-card-light dark:bg-card-dark rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
@@ -38,6 +50,8 @@ export default function PostCard({ post }: PostCardProps) {
             <time>{new Date(post.date).toLocaleDateString()}</time>
             <span className="mx-2">•</span>
             <span>{post.readingTime} min read</span>
+            <span className="mx-2">•</span>
+            <span>{views} views</span>
           </div>
         </div>
       </article>

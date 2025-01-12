@@ -8,6 +8,13 @@ interface Post {
   excerpt: string;
   coverImage: string;
   readingTime: string;
+  views: number;
+  category: string;
+  tags: string[];
+  author: {
+    name: string;
+    picture: string;
+  };
 }
 
 export default async function Posts() {
@@ -18,6 +25,10 @@ export default async function Posts() {
     "excerpt",
     "coverImage",
     "readingTime",
+    "views",
+    "category",
+    "tags",
+    "author",
   ])) as Post[];
 
   return (

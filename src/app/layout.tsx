@@ -5,6 +5,8 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import "@/styles/fonts.css";
 import Navbar from "@/components/Navbar";
+import { getAllPosts } from "@/lib/api";
+import LayoutWrapper from "@/components/LayoutWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,21 +26,44 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+interface Post {
+  title: string;
+  date: string;
+  slug: string;
+  excerpt: string;
+  coverImage: string;
+  readingTime: number;
+  category: string;
+  views: number;
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const posts = (await getAllPosts([
+    "title",
+    "date",
+    "slug",
+    "excerpt",
+    "coverImage",
+    "readingTime",
+    "category",
+    "views",
+  ])) as Post[];
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background-light dark:bg-background-dark`}
       >
         <div className="min-h-screen flex flex-col">
-          <Navbar />
+          <Navbar posts={posts} />
           <main className="flex-grow container mx-auto px-4 py-8">
-            {children}
+            <LayoutWrapper posts={posts}>{children}</LayoutWrapper>
           </main>
+
           <footer className="border-t border-secondary-light dark:border-secondary-dark bg-background-light dark:bg-background-dark">
             <div className="container mx-auto px-4 py-6 text-center text-text-light dark:text-text-dark">
               CodeBrew Blog © {new Date().getFullYear()}
