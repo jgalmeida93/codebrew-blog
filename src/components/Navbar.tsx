@@ -59,7 +59,6 @@ export default function Navbar({ posts }: { posts: Post[] }) {
             />
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <Link
               href="/"
@@ -92,7 +91,6 @@ export default function Navbar({ posts }: { posts: Post[] }) {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-4">
             <button
               onClick={toggleTheme}
@@ -115,7 +113,6 @@ export default function Navbar({ posts }: { posts: Post[] }) {
           </div>
         </div>
 
-        {/* Mobile Slide-out Menu */}
         <div className="md:hidden">
           <motion.div
             initial={{ x: "100%" }}
@@ -133,7 +130,6 @@ export default function Navbar({ posts }: { posts: Post[] }) {
                 </button>
               </div>
 
-              {/* Navigation Links */}
               <div className="space-y-6 mb-8">
                 <Link
                   href="/"
@@ -155,7 +151,6 @@ export default function Navbar({ posts }: { posts: Post[] }) {
                 </Link>
               </div>
 
-              {/* Categories Section */}
               <div className="mb-8">
                 <h3 className="text-xl font-semibold text-text-secondary-light dark:text-accent-primary mb-4">
                   Categories
@@ -173,7 +168,6 @@ export default function Navbar({ posts }: { posts: Post[] }) {
                 </div>
               </div>
 
-              {/* Popular Posts Section */}
               <div>
                 <h3 className="text-xl font-semibold text-text-secondary-light dark:text-accent-primary mb-4">
                   Popular Posts
