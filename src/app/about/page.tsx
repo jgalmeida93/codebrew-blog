@@ -9,7 +9,7 @@ export default function AboutPage() {
             <div className="relative h-[400px] w-full rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/me.jpeg"
-                alt="Jonas"
+                alt="Founder"
                 width={500}
                 height={400}
                 className="object-cover w-full h-full"
@@ -18,26 +18,35 @@ export default function AboutPage() {
           </div>
 
           <div className="order-1 md:order-2">
-            <h1 className="text-5xl font-bold text-accent-primary mb-6">
-              Olá, Me chamo <span className="text-accent-secondary">Jonas</span>
+            <h1 className="text-3xl font-bold text-accent-primary mb-6">
+              Front-end Developer &{" "}
+              <span className="text-accent-secondary">Coffee Enthusiast</span>
             </h1>
             <h2 className="text-2xl font-medium text-text-secondary-light dark:text-text-secondary-dark mb-6">
-              Front end Developer
+              Founder of CodeBrew Labs
             </h2>
             <div className="space-y-4 text-lg">
               <p className="text-text-secondary-light dark:text-text-secondary-dark mb-4">
-                Eu crio experiências web modernas usando tecnologias de ponta.
-                Especializado no ecossistema React, Next.js e TypeScript.
+                Na CodeBrew Labs, uni minhas duas maiores paixões: café e
+                código. Como desenvolvedor front-end, crio experiências digitais
+                únicas enquanto saboreio as melhores xícaras de café.
               </p>
               <p className="text-text-secondary-light dark:text-text-secondary-dark mb-4">
-                Fora do código, sou apaixonado por explorar novas tecnologias e
-                tendências, sempre em busca de aprender e inovar.
+                Especializado em React, Next.js e TypeScript, transformo ideias
+                em interfaces modernas e intuitivas. Assim como um barista
+                extrai o melhor de cada grão, extraio o máximo de cada linha de
+                código para entregar produtos excepcionais.
+              </p>
+              <p className="text-text-secondary-light dark:text-text-secondary-dark mb-4">
+                Na CodeBrew Labs, cada projeto é preparado com a mesma dedicação
+                de um café especial: atenção aos detalhes, processo refinado e
+                resultado extraordinário.
               </p>
             </div>
 
             <div className="mt-8 flex gap-4">
               <a
-                href="https://github.com/jgalmeida93"
+                href="https://github.com/yourusername"
                 className="px-6 py-3 bg-accent-primary text-white rounded-lg hover:bg-accent-secondary transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -45,7 +54,7 @@ export default function AboutPage() {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com/in/jgalmeida93"
+                href="https://linkedin.com/in/yourusername"
                 className="px-6 py-3 border border-accent-primary text-accent-primary rounded-lg hover:bg-accent-primary hover:text-white transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
