@@ -1,5 +1,8 @@
+import { useTranslations } from "next-intl";
 import PostList from "../components/PostList";
 import { getAllPosts } from "../lib/api";
+
+import { cookies } from "next/headers";
 
 interface Post {
   title: string;
@@ -12,28 +15,37 @@ interface Post {
   views: number;
 }
 
-export default async function Home() {
-  const posts = (await getAllPosts([
-    "title",
-    "date",
-    "slug",
-    "excerpt",
-    "coverImage",
-    "readingTime",
-    "category",
-    "views",
-  ])) as Post[];
+export default function Home() {
+  const t = useTranslations("titles");
+  const cookieStore = cookies();
+
+  async function getPosts() {
+    const locale = (await cookieStore).get("NEXT_LOCALE")?.value || "pt-BR";
+    return (await getAllPosts(
+      [
+        "title",
+        "date",
+        "slug",
+        "excerpt",
+        "coverImage",
+        "readingTime",
+        "category",
+        "views",
+      ],
+      locale
+    )) as unknown as Post[];
+  }
 
   return (
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold text-secondary-dark dark:text-accent-primary mb-8">
-          Últimos posts
+          {t("latestPosts")}
         </h1>
         <div className="divide-y divide-border-dark">
-          {posts.map((post) => (
-            <PostList key={post.slug} post={post} />
-          ))}
+          {getPosts().then((posts) =>
+            posts.map((post) => <PostList key={post.slug} post={post} />)
+          )}
         </div>
       </div>
     </div>

@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 interface Post {
   title: string;
   date: string;
@@ -14,14 +16,15 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ posts }: SidebarProps) {
+  const t = useTranslations("sidebar");
   const categories = [...new Set(posts.map((post) => post.category))];
   const popularPosts = posts.sort((a, b) => b.views - a.views).slice(0, 5);
 
   return (
-    <div className="sticky top-4 space-y-8">
+    <div className="sticky top-20 space-y-8">
       <div className="bg-background-light dark:bg-background-dark p-6 rounded-lg border border-secondary-light dark:border-border-dark">
         <h2 className="text-4xl font-bold text-secondary-dark dark:text-accent-primary mb-4">
-          Categorias
+          {t("categories")}
         </h2>
         <ul className="space-y-2 divide-y divide-border-dark">
           {categories.map((category) => (
@@ -39,7 +42,7 @@ export default function Sidebar({ posts }: SidebarProps) {
 
       <div className="bg-background-light dark:bg-background-dark p-6 rounded-lg border border-secondary-light dark:border-border-dark">
         <h2 className="text-4xl font-bold text-secondary-dark dark:text-accent-primary mb-4">
-          Posts Populares
+          {t("popularPosts")}
         </h2>
         <ul className="space-y-4 divide-y divide-border-dark">
           {popularPosts.map((post) => (
