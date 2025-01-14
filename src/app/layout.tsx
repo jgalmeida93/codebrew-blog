@@ -55,6 +55,16 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <meta property="og:title" content="Codebrew Labs Blog" />
+        <meta
+          property="og:description"
+          content="A blog by Codebrew Labs, sharing knowledge and insights."
+        />
+        <meta property="og:image" content="/images/share.jpeg" />
+        <meta property="og:url" content="https://www.codebrewlabs.com.br" />
+        <meta property="og:type" content="website" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background-light dark:bg-background-dark`}
       >
