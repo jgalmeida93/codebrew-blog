@@ -1,0 +1,82 @@
+---
+title: "What is Hoisting in JavaScript? Understanding it Simply"
+excerpt: "An easy and didactic explanation of how hoisting works in JavaScript, for you to understand without complications."
+date: "2025-01-14"
+coverImage: "/images/posts/hoisting.png"
+readingTime: 4
+views: 0
+category: "JavaScript Basics"
+tags: ["javascript", "hoisting", "learning"]
+author: { name: "Jonas G.", picture: "/me.jpeg" }
+---
+
+Imagine you're preparing for a magic show. Before starting, the magician organizes all the items they'll use on stage, putting the cards, rabbits, and hat in the right place. This helps them perform tricks without getting confused.
+
+In JavaScript, something similar happens when you write your code. The "magician" in this case is JavaScript, which organizes some things before starting to run the program. This automatic organization is called **hoisting**.
+
+---
+
+## How Does Hoisting Work?
+
+1. **Definitions First:**
+   JavaScript takes all variable and function **declarations** and "lifts" them to the top of the code. It's as if it's saying: "Before starting, I'll separate everything that's important so I don't get lost."
+
+2. **Important:**
+   Only **declarations** are moved to the top, not the assigned values. It's like saying: "Hey, this magic hat exists!", but JavaScript only discovers **how** to use the hat when it reaches the right time in the code.
+
+---
+
+## A Simple Example
+
+Look at this code:
+
+```javascript
+console.log(myName); // undefined
+var myName = "Jonas";
+console.log(myName); // Jonas
+```
+
+At first, it seems strange: How does JavaScript know that **myName** exists before I declare it?
+
+This happens because it does something like this behind the scenes:
+
+```javascript
+var myName; // Declaration "lifted"
+console.log(myName); // undefined
+myName = "Jonas"; // Value assigned
+console.log(myName); // Jonas
+```
+
+In other words, it lifts the declaration of the variable **myName**, but only assigns the value "Jonas" in the right place.
+
+## Hoisting with **let** and **const**
+
+Now, there's an important difference: if you use **let** or **const**, JavaScript doesn't let you **use the variables before declaring them**.
+Look:
+
+```javaScript
+console.log(age); // Error: Cannot access 'age' before initialization
+let age = 14;
+```
+
+This happens because **let** and **const** are kept in a special area and can only be used after you declare them.
+
+## Hoisting with Functions
+
+Functions in JavaScript are also "hoisted". See this example:
+
+```javascript
+greet();
+
+function greet() {
+  console.log("Hello!");
+}
+```
+
+Even calling the function **before declaring it**, it works! This happens because JavaScript "lifts" the entire function to the top of the code.
+
+## Conclusion
+
+Hoisting is like JavaScript being a super organized magician: it takes a quick look at your code before starting to run, separates all variable and function declarations, and only then starts the show.
+
+But remember: with great power comes great responsibility. Using hoisting without understanding it can cause confusion. So, declare your variables and functions carefully to make your code clearer and more organized!

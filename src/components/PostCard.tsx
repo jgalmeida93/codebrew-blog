@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface PostCardProps {
   post: {
@@ -18,6 +19,7 @@ interface PostCardProps {
 
 export default function PostCard({ post }: PostCardProps) {
   const [views, setViews] = useState(post.views);
+  const t = useTranslations("postCard");
 
   useEffect(() => {
     fetch(`/api/views/${post.slug}`)
@@ -47,8 +49,8 @@ export default function PostCard({ post }: PostCardProps) {
           </p>
 
           <div className="text-xs md:text-sm text-text-secondary-light dark:text-text-secondary-dark mt-2 dark:group-hover:text-text-semiLight group-hover:text-text-secondary-light">
-            {new Date(post.date).toLocaleDateString()} · {post.readingTime} min
-            read · {views} views
+            {new Date(post.date).toLocaleDateString()} · {post.readingTime}{" "}
+            {t("read")} · {views} {t("views")}
           </div>
         </div>
       </article>

@@ -1,6 +1,8 @@
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 export default function AboutPage() {
+  const t = useTranslations("about");
   return (
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8">
@@ -19,28 +21,23 @@ export default function AboutPage() {
 
           <div className="order-1 md:order-2">
             <h1 className="text-3xl font-bold text-accent-primary mb-6">
-              Front-end Developer &{" "}
-              <span className="text-accent-secondary">Coffee Enthusiast</span>
+              {t("title")}{" "}
+              <span className="text-accent-secondary">
+                {t("titleHighlight")}
+              </span>
             </h1>
             <h2 className="text-2xl font-medium text-text-secondary-light dark:text-text-secondary-dark mb-6">
-              Founder of CodeBrew Labs
+              {t("subtitle")}
             </h2>
             <div className="space-y-4 text-lg">
               <p className="text-text-secondary-light dark:text-text-secondary-dark mb-4">
-                Na CodeBrew Labs, uni minhas duas maiores paixões: café e
-                código. Como desenvolvedor front-end, crio experiências digitais
-                únicas enquanto saboreio as melhores xícaras de café.
+                {t("description1")}
               </p>
               <p className="text-text-secondary-light dark:text-text-secondary-dark mb-4">
-                Especializado em React, Next.js e TypeScript, transformo ideias
-                em interfaces modernas e intuitivas. Assim como um barista
-                extrai o melhor de cada grão, extraio o máximo de cada linha de
-                código para entregar produtos excepcionais.
+                {t("description2")}
               </p>
               <p className="text-text-secondary-light dark:text-text-secondary-dark mb-4">
-                Na CodeBrew Labs, cada projeto é preparado com a mesma dedicação
-                de um café especial: atenção aos detalhes, processo refinado e
-                resultado extraordinário.
+                {t("description3")}
               </p>
             </div>
 

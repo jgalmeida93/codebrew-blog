@@ -1,0 +1,31 @@
+{
+  "navigation": {
+    "home": "Início",
+    "posts": "Artigos",
+    "about": "Sobre",
+    "menu": "Menu",
+    "categories": "Categorias",
+    "popularPosts": "Artigos Populares",
+    "views": "{count} visualizações"
+  },
+  "postCard": {
+    "read": "min de leitura",
+    "views": "visualizações"
+  },
+  "sidebar": {
+    "categories": "Categorias",
+    "popularPosts": "Artigos Populares"
+  },
+  "titles": {
+    "latestPosts": "Últimos Artigos",
+    "allPosts": "Todos os Artigos"
+  },
+  "about": {
+    "title": "Front-end Developer &",
+    "titleHighlight": "Coffee Enthusiast",
+    "subtitle": "Founder of CodeBrew Labs",
+    "description1": "Na CodeBrew Labs, uni minhas duas maiores paixões: café e código. Como desenvolvedor front-end, crio experiências digitais únicas enquanto saboreio as melhores xícaras de café.",
+    "description2": "Especializado em React, Next.js e TypeScript, transformo ideias em interfaces modernas e intuitivas. Assim como um barista extrai o melhor de cada grão, extraio o máximo de cada linha de código para entregar produtos excepcionais.",
+    "description3": "Na CodeBrew Labs, cada projeto é preparado com a mesma dedicação de um café especial: atenção aos detalhes, processo refinado e resultado extraordinário."
+  }
+}

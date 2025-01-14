@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import PostCard from "@/components/PostCard";
 import { getAllPosts } from "@/lib/api";
 
@@ -17,20 +18,27 @@ type tParams = Promise<{ slug: string }>;
 export default async function CategoryPage(props: { params: tParams }) {
   const { slug } = await props.params;
 
-  const posts = (await getAllPosts([
-    "title",
-    "date",
-    "slug",
-    "excerpt",
-    "coverImage",
-    "readingTime",
-    "category",
-    "views",
-  ])) as Post[];
+  const cookieStore = cookies();
+  async function getPosts() {
+    const locale = (await cookieStore).get("NEXT_LOCALE")?.value || "pt-BR";
+    return (await getAllPosts(
+      [
+        "title",
+        "date",
+        "slug",
+        "excerpt",
+        "coverImage",
+        "readingTime",
+        "category",
+        "views",
+      ],
+      locale
+    )) as unknown as Post[];
+  }
 
   const decodedSlug = decodeURIComponent(slug).toLowerCase();
 
-  const filteredPosts = posts.filter(
+  const filteredPosts = (await getPosts()).filter(
     (post) => post.category.toLowerCase() === decodedSlug
   );
 

@@ -1,6 +1,7 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPostBySlug } from "../../../lib/api";
 import Image from "next/image";
+import { cookies } from "next/headers";
 
 interface Post {
   title: string;
@@ -18,22 +19,27 @@ interface Post {
   };
 }
 
-type PostParams = Promise<{ slug: string }>;
+const Post = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const cookieStore = await cookies();
+  const language: string = cookieStore.get("NEXT_LOCALE")?.value || "pt-BR";
 
-const Post = async ({ params }: { params: PostParams }) => {
   const { slug } = await params;
-  const post = (await getPostBySlug(slug, [
-    "title",
-    "date",
-    "slug",
-    "content",
-    "coverImage",
-    "readingTime",
-    "views",
-    "category",
-    "tags",
-    "author",
-  ])) as Post;
+  const post = (await getPostBySlug(
+    slug,
+    [
+      "title",
+      "date",
+      "slug",
+      "content",
+      "coverImage",
+      "readingTime",
+      "views",
+      "category",
+      "tags",
+      "author",
+    ],
+    language
+  )) as Post;
 
   await fetch(`${process.env.NEXT_PUBLIC_URL}/api/views/${slug}`, {
     method: "POST",
