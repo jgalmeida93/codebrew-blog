@@ -46,7 +46,7 @@ export default function AboutPage() {
 
             <div className="mt-8 flex gap-4">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/jgalmeida93"
                 className="px-6 py-3 bg-accent-primary text-white rounded-lg hover:bg-accent-secondary transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -54,7 +54,7 @@ export default function AboutPage() {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://linkedin.com/in/jgalmeida93"
                 className="px-6 py-3 border border-accent-primary text-accent-primary rounded-lg hover:bg-accent-primary hover:text-white transition-colors duration-200"
                 target="_blank"
                 rel="noopener noreferrer"
