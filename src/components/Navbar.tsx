@@ -49,7 +49,7 @@ export default function Navbar({ posts }: { posts: Post[] }) {
 
   useEffect(() => {
     setMounted(true);
-    setCookie("NEXT_LOCALE", language);
+    setCookie("NEXT_LOCALE", "pt-BR");
   }, []);
 
   useEffect(() => {
