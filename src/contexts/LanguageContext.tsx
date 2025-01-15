@@ -26,11 +26,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
-  const [language, setLanguage] = useState<Language>(
-    typeof window !== "undefined"
-      ? (localStorage.getItem("locale") as Language) || "en-US"
-      : "en-US"
-  );
+  const [language, setLanguage] = useState<Language>("pt-BR");
   const [messages, setMessages] = useState(language === "en-US" ? enUS : ptBR);
 
   useEffect(() => {
