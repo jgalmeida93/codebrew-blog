@@ -7,6 +7,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { setCookie } from "@/app/actions/setCookies";
 
 interface Post {
   title: string;
@@ -48,6 +49,7 @@ export default function Navbar({ posts }: { posts: Post[] }) {
 
   useEffect(() => {
     setMounted(true);
+    setCookie("NEXT_LOCALE", language);
   }, []);
 
   useEffect(() => {
