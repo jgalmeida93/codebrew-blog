@@ -1,0 +1,164 @@
+---
+title: "Entendendo o Ciclo de Vida dos Componentes React: Um Guia para Iniciantes"
+excerpt: "Aprenda como os componentes React são criados, atualizados e destruídos, com explicações simples e exemplos fáceis de entender."
+date: "2025-01-14"
+coverImage: "/images/posts/lifecycle.png"
+readingTime: 5
+views: 0
+category: "Conceitos de React"
+tags: ["react", "ciclo de vida", "hooks", "frontend"]
+author: { name: "Jonas G.", picture: "/me.jpeg" }
+---
+
+Imagine que você está construindo um modelo **LEGO**.
+
+Primeiro, você junta as peças **(inicialização)**, depois começa a montar **(renderização)**, faz ajustes conforme necessário **(atualização)** e, finalmente, se terminar ou mudar de modelo, desmonta tudo **(desmontagem)**.
+
+O ciclo de vida de um componente React funciona de forma semelhante!
+
+## O Ciclo de Vida de um Componente React
+
+Os componentes React passam por três fases principais:
+
+1. **Montagem**: Quando o componente é criado e inserido no DOM pela primeira vez.
+
+2. **Atualização**: Quando as props ou o estado do componente mudam, ele é atualizado para refletir essas alterações.
+
+3. **Desmontagem**: Quando um componente é removido do DOM.
+
+Vamos detalhar cada etapa:
+
+## 1. Montagem: "Construindo o Modelo LEGO"
+
+Quando um componente React é criado, as seguintes etapas acontecem:
+
+**constructor** (opcional): Configura o estado inicial e vincula manipuladores de eventos.
+
+**render()**: Descreve como a interface do usuário deve ser exibida.
+
+**useEffect** (com array de dependências vazio): Executa após o componente ser montado, ideal para buscar dados ou se inscrever em serviços.
+
+Exemplo:
+
+```javascript
+import React, { useState, useEffect } from "react";
+
+function Welcome() {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    setMessage("Bem-vindo ao React!"); // Simula a busca de dados iniciais
+  }, []); // Executa apenas uma vez ao montar
+
+  return <h1>{message}</h1>;
+}
+```
+
+## 2. Atualização: "Fazendo Ajustes"
+
+Os componentes React são atualizados quando:
+
+**O estado muda**: Acionado por useState ou hooks similares.
+
+**As props mudam**: Quando novos dados são passados de um componente pai.
+
+### Para otimizar as atualizações:
+
+Use **keys exclusivas** em listas para ajudar o React a atualizar o DOM de forma eficiente.
+
+Utilize hooks como **useMemo** e **useCallback** para evitar recálculos ou **re-renderizações desnecessárias**.
+
+Exemplo:
+
+```javascript
+import React, { useState, useCallback, useMemo } from "react";
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  const [otherState, setOtherState] = useState(false);
+
+  // Função incrementada com useCallback para evitar recriação em cada renderização
+  const increment = useCallback(
+    () => setCount((prevCount) => prevCount + 1),
+    []
+  );
+
+  // Valor memoizado para simular um cálculo pesado
+  const expensiveCalculation = useMemo(() => {
+    console.log("Recalculando valor...");
+    return count * 2;
+  }, [count]);
+
+  return (
+    <div>
+      <p>Contador: {count}</p>
+      <p>Cálculo pesado (count * 2): {expensiveCalculation}</p>
+      <button onClick={increment}>Incrementar</button>
+      <button onClick={() => setOtherState(!otherState)}>
+        Alterar outro estado
+      </button>
+    </div>
+  );
+}
+
+export default Counter;
+```
+
+Explicação:
+
+1. useCallback:
+
+- O increment é memoizado com useCallback, o que evita que ele seja recriado em cada renderização. Isso é útil ao passar a função como prop para componentes filhos, evitando renderizações desnecessárias.
+
+2. useMemo:
+
+- A variável expensiveCalculation é calculada apenas quando o estado count muda, evitando cálculos desnecessários nas renderizações.
+
+3. Testando a otimização:
+
+- Quando você clicar em "Alterar outro estado", verá que o cálculo pesado não será executado novamente, já que ele depende apenas de count.
+
+## 3. Desmontagem: "Desmontando o Modelo LEGO"
+
+Quando um componente é removido do DOM, o React realiza uma limpeza para evitar vazamentos de memória. Você pode lidar com isso usando:
+
+**useEffect** (com uma função de limpeza): Ideal para **cancelar** inscrições ou temporizadores.
+
+Exemplo:
+
+```javascript
+function Timer() {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log("Tick");
+    }, 1000);
+
+    return () => clearInterval(interval); // Limpeza ao desmontar
+  }, []);
+
+  return <p>Confira o console para os ticks!</p>;
+}
+```
+
+## Por Que Isso É Importante?
+
+Entender o ciclo de vida dos componentes React ajuda você a:
+
+- Escrever códigos **eficientes** e **livres de bugs**.
+
+- **Otimizar o desempenho**, evitando re-renderizações desnecessárias.
+
+- Gerenciar **efeitos colaterais** como chamadas de API e inscrições.
+
+Dominando esses conceitos, você estará pronto para lidar com aplicações React complexas!
+
+## Resumo: Ciclo de Vida do React em Poucas Palavras
+
+Os componentes são **montados** (inicializados e renderizados).
+
+Os componentes são **atualizados** (mudanças de props/estado).
+
+Os componentes são **desmontados** (limpos e removidos).
+
+Com hooks como useEffect, useCallback e useMemo, você tem as ferramentas para gerenciar cada fase de forma eficaz.
+Bons códigos!

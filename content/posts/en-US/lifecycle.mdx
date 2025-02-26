@@ -1,0 +1,128 @@
+---
+title: "Understanding the React Component Lifecycle: A Beginner's Guide"
+excerpt: "Learn how React components are created, updated, and destroyed, with simple explanations and relatable examples."
+date: "2025-01-14"
+coverImage: "/images/posts/lifecycle.png"
+readingTime: 5
+views: 0
+category: "React Basics"
+tags: ["react", "lifecycle", "hooks", "frontend"]
+author: { name: "Jonas G.", picture: "/me.jpeg" }
+---
+
+Imagine you're building a LEGO model. First, you gather the pieces **(initialization)**, then you start assembling **(rendering)**, make adjustments as needed **(updates)**, and finally, if you're done or changing models, you dismantle it **(unmounting)**.
+
+The lifecycle of a React component **works similarly!**
+
+## The React Component Lifecycle
+
+React components go through three main phases:
+
+1. **Mounting**: This is when the component is created and inserted into the DOM for the first time.
+
+2. **Updating**: When a component's props or state changes, it updates to reflect those changes.
+
+3. **Unmounting**: When a component is removed from the DOM.
+
+Let’s break it down step by step:
+
+## 1. Mounting: "Building the LEGO Model"
+
+When a React component is created, the following happens:
+
+- **constructor** (optional): Sets up initial state and binds event handlers.
+
+- **render()**: Describes what the UI should look like.
+
+- **useEffect** (with an empty dependency array): Runs after the component is mounted, perfect for fetching data or subscribing to services.
+
+Example:
+
+```javascript
+import React, { useState, useEffect } from "react";
+
+function Welcome() {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    setMessage("Welcome to React!"); // Simulates fetching initial data
+  }, []); // Runs only once when mounted
+
+  return <h1>{message}</h1>;
+}
+```
+
+## 2. Updating: "Making Adjustments"
+
+React components update when:
+
+- **State changes**: Triggered by useState or similar hooks.
+
+- **Props change**: When new data is passed from a parent component.
+
+### To optimize updates:
+
+Use **keys** in lists to help React efficiently update the DOM.
+
+Leverage hooks like useMemo and useCallback to avoid unnecessary recalculations or re-renders.
+
+Example:
+
+```javascript
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => setCount(count + 1);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={increment}>Increment</button>
+    </div>
+  );
+}
+```
+
+## 3. Unmounting: "Dismantling the LEGO Model"
+
+When a component is removed from the DOM, React cleans up to prevent memory leaks. You can handle this using:
+
+**useEffect** (with a cleanup function): Ideal for **unsubscribing** from services or timers.
+
+Example:
+
+```javascript
+function Timer() {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log("Tick");
+    }, 1000);
+
+    return () => clearInterval(interval); // Cleanup when unmounted
+  }, []);
+
+  return <p>Check the console for ticks!</p>;
+}
+```
+
+## Why Is This Important?
+
+Understanding the React component lifecycle helps you:
+
+- Write efficient and bug-free code.
+
+- Optimize performance by avoiding unnecessary re-renders.
+
+- Manage side effects like API calls and subscriptions.
+
+By mastering these concepts, you'll be ready to tackle even the most complex React applications!
+
+## TL;DR: React Lifecycle in a Nutshell
+
+**Components are mounted** (initialized and rendered).
+
+**Components are updated** (props/state changes).
+
+**Components are unmounted** (cleaned up and removed).
+
+With hooks like useEffect, useCallback, and useMemo, you have the tools to manage each phase effectively. Happy coding!

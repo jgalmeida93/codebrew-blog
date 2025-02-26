@@ -2,6 +2,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPostBySlug } from "../../../lib/api";
 import Image from "next/image";
 import { cookies } from "next/headers";
+import CodeBlock from "@/components/Codeblock";
 
 interface Post {
   title: string;
@@ -48,6 +49,10 @@ const Post = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const views = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/views/${slug}`)
     .then((res) => res.json())
     .then((data) => data.views);
+
+  const components = {
+    code: CodeBlock,
+  };
 
   return (
     <main className="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark container mx-auto px-4 py-8">
@@ -99,7 +104,7 @@ const Post = async ({ params }: { params: Promise<{ slug: string }> }) => {
         </div>
 
         <div className="prose prose-lg dark:prose-invert">
-          <MDXRemote source={post.content} />
+          <MDXRemote source={post.content} components={components} />
         </div>
       </article>
     </main>
